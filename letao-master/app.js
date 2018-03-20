@@ -11,7 +11,6 @@ var category = require('./routes/category');
 var cart = require('./routes/cart');
 var address = require('./routes/address');
 var employee = require('./routes/employee');
-
 var app = express();
 
 app.use(session({
@@ -24,10 +23,18 @@ app.use(session({
 
 app.use(function (req, res, next) {
     var url = req.originalUrl;
+    // if (!req.session.employee
+    //     && ((url.indexOf('/admin') > -1 && url.indexOf('.html') > -1) || url == '/admin/' )
+    //     && url.indexOf('/admin/login.html') == -1) {
+    //     return res.redirect('/admin/login.html');
+    // }
+    // next();
+
+
     if (!req.session.employee
-        && ((url.indexOf('/admin') > -1 && url.indexOf('.html') > -1) || url == '/admin/' )
-        && url.indexOf('/admin/login.html') == -1) {
-        return res.redirect('/admin/login.html');
+        && ((url.indexOf('/be') > -1 && url.indexOf('.html') > -1) || url == '/be/' )
+        && url.indexOf('/be/login.html') == -1) {
+        return res.redirect('/be/login.html');
     }
     next();
 });

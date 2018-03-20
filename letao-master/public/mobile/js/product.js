@@ -93,7 +93,7 @@ var getProductData = function(callback){
     LeTao.ajax({
         type:'get',
         url:'/product/queryProductDetail',
-        data:{id:window.productId},
+        data:{id:2},  //window.productId
         dataType:'json',
         success:function(data){
             callback && callback(data);
